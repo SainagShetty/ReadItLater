@@ -114,18 +114,14 @@ body {
       $count=mysql_num_rows($result);
       $row = mysql_fetch_array($result,MYSQL_ASSOC);
             $pl = $row['place'];
-            if(strcmp($pl,"1")==0){
-              echo '<a class="nav navbar-nav navbar-brand" href="#"><span class="glyphicon glyphicon-plus"></span></a>';
-            }
-            else{
+            if(strcmp($pl,"1")!=0){
+             
               if(strcmp($pl,"0")==0){
-                echo '<a class="nav navbar-nav navbar-brand" href="#"><span class="glyphicon glyphicon-ok"></span></a> 
-                      <a class="nav navbar-nav navbar-brand" href="#"><span class="glyphicon glyphicon-trash"></span></a>
+                echo '<a class="nav navbar-nav navbar-brand" href="delete.php?aid='.$aid.'"><span class="glyphicon glyphicon-trash"></span></a>
                       <a class="nav navbar-nav navbar-brand" href="#"><span class="glyphicon glyphicon-star-empty"></span></a>';
               }
               else{
-                echo '<a class="nav navbar-nav navbar-brand" href="#"><span class="glyphicon glyphicon-ok"></span></a> 
-                      <a class="nav navbar-nav navbar-brand" href="#"><span class="glyphicon glyphicon-trash"></span></a>
+                echo '<a class="nav navbar-nav navbar-brand" href="delete.php?aid='.$aid.'"><span class="glyphicon glyphicon-trash"></span></a>
                       <a class="nav navbar-nav navbar-brand" href="#"><span class="glyphicon glyphicon-star" style="color:goldenrod;"></span></a>';   
               }
             }
@@ -133,8 +129,7 @@ body {
           ?>
           
         </div>
-          <a class="navbar-brand nav navbar-nav nav-pls" href="#" style="float: right;margin-left: 0px !important;"><span class="glyphicon glyphicon-share-alt"></span></a>  
-      </div>
+          </div>
     </nav>
 
 <div class="container" style="margin-top: 70px;">
@@ -165,8 +160,6 @@ body {
 </div>
 
 </div>
-
-
 </body>
 </html>
 
