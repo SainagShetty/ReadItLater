@@ -75,9 +75,9 @@
 
 <section class="some-related-articles">
 </br><h1 align=center>ABOUT</h1>
-</br><p>READ IT LATER was founded in 2015 by RAS enterprises to help people save interesting articles, videos and more from the web for later enjoyment.</p>
+</br><p>READ IT LATER was founded in 2015 by RAS enterprises to help people save interesting articles, images and more from the web for later enjoyment.</p>
  <p>Once saved to Read It Later, the list of content is visible on any device; phone, tablet or computer.</p> 
- <p>It can be viewed while waiting in line, on the couch, during commutes or travel , even offline.</p>
+ <p>It can be viewed while waiting in line, on the couch, during commutes or travel.</p>
  <p>It is available for major devices and platforms including Google Chrome, Safari, Firefox, Opera and Windows.</p>
  <p>Follow us on Twitter or Facebook for the latest news.
 </p>

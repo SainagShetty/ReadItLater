@@ -75,8 +75,7 @@
                 <li class="dropdown">
                   <a class="dropdown-toggle" id="username" data-toggle="dropdown" href=""><?php echo $_SESSION['username']?><span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="#">Help</a></li>
-                    <li><a href="edit_account.php">Edit Account</a></li>
+                    <li><a href="help.php">Help</a></li>
                     <li><a href="logout.php">Logout</a></li>
                   </ul>
     </div>
@@ -98,6 +97,11 @@
               }
             ?>
           </div>
+
+  
+
+
+
           <div class="list-group">
             <?php
              error_reporting(0);
