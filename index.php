@@ -85,7 +85,6 @@
     <div class="container" style="margin-top: 70px;">
       <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#home">My List</a></li>
-        <li><a data-toggle="tab" href="#menu1">Archive</a></li>
         <li><a data-toggle="tab" href="#menu2">Favorites</a></li>
       </ul>
       <div class="tab-content">
@@ -135,34 +134,7 @@
             ?>
           </div>
         </div>
-        <div id="menu1" class="tab-pane fade"><br>
-          <div class="list-group">
-            <?php
-                include_once 'config.php';
-                try{
-                  mysql_connect("$host", "$username", "$password")or die("cannot connect");
-                  mysql_select_db("$db_name")or die("cannot select DB");
-                  $uid = $_SESSION['id'];
-                  $sql="SELECT * FROM $tbl_name_art WHERE id=$uid and place = 1 and title != '' ORDER BY aid DESC";
-                  $result=mysql_query($sql);
-                  $count=mysql_num_rows($result);
-                  if($count==0){
-                    echo '<h4 class="list-group-item-heading">Nothing in the Archived section!</h4>';
-                  }
-                  else{
-                  $row=0;
-                    while($row = mysql_fetch_array($result,MYSQL_ASSOC)){
-                        echo mb_convert_encoding('<a href="'."article_page.php?aid=".$row['aid'].'" class="list-group-item modal-fade">
-                              <h4 class="list-group-item-heading">'.$row['title'].'</h4>
-                              <p class="list-group-item-text">'.$row['author'].'</p>
-                              </a>',"HTML-ENTITIES","UTF-8");;
-                    }
-                  }
-                }
-                catch(Exception $ea){}
-            ?>
-          </div>
-        </div>
+        
         <div id="menu2" class="tab-pane fade"><br>
           <div class="list-group">
             <?php
