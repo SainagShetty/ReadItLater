@@ -95,9 +95,78 @@ body {
     line-height: 1.5;
 }
 </style>
+
+
+   <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript">
+    $(window).load(function(){
+        $('#myModal').modal('show');
+setTimeout(function(){
+        $("#myModal").modal('hide');
+    }, 900);
+    });
+
+</script>
   </head>
   <body>
-    
+    <?php
+      if(isset($_GET['fn'])){
+    $fn=$_GET['fn'];
+    if($fn=='31'){
+      echo '<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Item Archived</h4>
+        </div>
+      </div>
+    </div>
+  </div>';
+    }
+    else{
+      if($fn=='30'){
+      echo '<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Item Added</h4>
+        </div>
+      </div>
+    </div>
+  </div>';
+    }
+    else{
+      if($fn=='34'){
+      echo '<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Item Favorited</h4>
+        </div>
+      </div>
+    </div>
+  </div>';}
+  else{
+      echo '<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Item Unfavorited</h4>
+        </div>
+      </div>
+    </div>
+  </div>';
+    }}
+    }
+  }
+
+    ?>
     <nav class="navbar navbar-inverse navbar-custom navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -115,26 +184,25 @@ body {
       $row = mysql_fetch_array($result,MYSQL_ASSOC);
             $pl = $row['place'];
             if(strcmp($pl,"1")==0){
-              echo '<a class="nav navbar-nav navbar-brand" href="#"><span class="glyphicon glyphicon-plus"></span></a>';
+              echo '<a class="nav navbar-nav navbar-brand" href="function.php?aid='.$aid.'&pl=0&action=ARC"><span class="glyphicon glyphicon-plus"></span></a>';
             }
             else{
               if(strcmp($pl,"0")==0){
-                echo '<a class="nav navbar-nav navbar-brand" href="#"><span class="glyphicon glyphicon-ok"></span></a> 
-                      <a class="nav navbar-nav navbar-brand" href="#"><span class="glyphicon glyphicon-trash"></span></a>
-                      <a class="nav navbar-nav navbar-brand" href="#"><span class="glyphicon glyphicon-star-empty"></span></a>';
+                echo '<a class="nav navbar-nav navbar-brand" href="function.php?aid='.$aid.'&pl=1&action=ARC"><span class="glyphicon glyphicon-ok"></span></a> 
+                      <a class="nav navbar-nav navbar-brand" href="function.php?aid='.$aid.'&action=REM"><span class="glyphicon glyphicon-trash"></span></a>
+                      <a class="nav navbar-nav navbar-brand" href="function.php?aid='.$aid.'&pl=3&action=FAV"><span class="glyphicon glyphicon-star-empty"></span></a>';
               }
               else{
-                echo '<a class="nav navbar-nav navbar-brand" href="#"><span class="glyphicon glyphicon-ok"></span></a> 
-                      <a class="nav navbar-nav navbar-brand" href="#"><span class="glyphicon glyphicon-trash"></span></a>
-                      <a class="nav navbar-nav navbar-brand" href="#"><span class="glyphicon glyphicon-star" style="color:goldenrod;"></span></a>';   
+                echo '<a class="nav navbar-nav navbar-brand" href="function.php?aid='.$aid.'&pl=1&action=ARC"><span class="glyphicon glyphicon-ok"></span></a> 
+                      <a class="nav navbar-nav navbar-brand" href="function.php?aid='.$aid.'&action=REM"><span class="glyphicon glyphicon-trash"></span></a>
+                      <a class="nav navbar-nav navbar-brand" href="function.php?aid='.$aid.'&pl=0&action=FAV"><span class="glyphicon glyphicon-star" style="color:goldenrod;"></span></a>';   
               }
             }
 
           ?>
           
         </div>
-          <a class="navbar-brand nav navbar-nav nav-pls" href="#" style="float: right;margin-left: 0px !important;"><span class="glyphicon glyphicon-share-alt"></span></a>  
-      </div>
+          </div>
     </nav>
 
 <div class="container" style="margin-top: 70px;">
@@ -165,8 +233,6 @@ body {
 </div>
 
 </div>
-
-
 </body>
 </html>
 

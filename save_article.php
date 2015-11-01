@@ -46,6 +46,12 @@ background-size: cover;}
 background-color: #e9ffff !important;
 }
 </style>
+ <script type="text/javascript" src="js/bootstrap.js"></script>
+<script src="js/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+   
+    <script src="js/save.js"></script>
+
   </head>
   
   <body>
@@ -83,11 +89,6 @@ background-color: #e9ffff !important;
 
 </div>
   </div> <!-- /container -->
-<script src="//code.jquery.com/jquery.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script type="text/javascript" src="js/bootstrap.js"></script>
-    <!-- The AJAX login script -->
-    <script src="js/save.js"></script>
-    
+
   </body>
 </html>

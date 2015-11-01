@@ -60,7 +60,7 @@ file_put_contents('uploads/'.$input.'.json', $jsondata2);
     mysql_query($sql) or die(mysql_error());
   if($sql){
     echo "true";
-    header("location:index.php");
+    header("location:index.php?fn=49");
   }
 
   ob_end_flush();
