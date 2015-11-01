@@ -99,7 +99,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
                 <li> <!--<a data-placement="bottom" data-toggle="popover" data-title="Save a URL" data-container="body" type="button" data-html="true" id="save"><span class="glyphicon glyphicon-plus"></span></a></li><div id="popover-content" class="hide"><form class="form-inline" role="form" name="form1" submit='checkstore.php' method="post" id="savesubmit"><div class="form-group"><input type="text" placeholder="http://.." class="form-control" name="url"></br><button type="submit" class="btn btn-primary" style="margin-top:10px;" id="savesubmit">Save</button> <div id="message"></div>                                 </div></form> <script src="js/save.js"></script></div>-->
-                  <a href="save_article.php"><span class="glyphicon glyphicon-plus"></span></a>
+                  <a href="save_article.php" data-toggle="tooltip" title="Save a URL!" data-placement="bottom"><span class="glyphicon glyphicon-plus"></span></a>
                 <li class="dropdown">
                   <a class="dropdown-toggle" id="username" data-toggle="dropdown" href=""><?php echo $_SESSION['username']?><span class="caret"></span></a>
                   <ul class="dropdown-menu">
@@ -251,6 +251,11 @@ setTimeout(function(){
     }, 900);
     });
 
+</script>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
 </script>
   </body>
 </html>

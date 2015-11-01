@@ -170,7 +170,7 @@ setTimeout(function(){
     <nav class="navbar navbar-inverse navbar-custom navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="nav navbar-nav navbar-brand" href="index.php"><span class="glyphicon glyphicon-arrow-left"></span></a>
+          <a data-toggle="tooltip" title="Go Back!" data-placement="bottom" class="nav navbar-nav navbar-brand" href="index.php"><span class="glyphicon glyphicon-arrow-left"></span></a>
           <?php 
            include_once 'config.php';
       mysql_connect("$host", "$username", "$password")or die("cannot connect");
@@ -184,18 +184,18 @@ setTimeout(function(){
       $row = mysql_fetch_array($result,MYSQL_ASSOC);
             $pl = $row['place'];
             if(strcmp($pl,"1")==0){
-              echo '<a class="nav navbar-nav navbar-brand" href="function.php?aid='.$aid.'&pl=0&action=ARC"><span class="glyphicon glyphicon-plus"></span></a>';
+              echo '<a data-toggle="tooltip" title="Add Item!" data-placement="bottom" class="nav navbar-nav navbar-brand" href="function.php?aid='.$aid.'&pl=0&action=ARC"><span class="glyphicon glyphicon-plus"></span></a>';
             }
             else{
               if(strcmp($pl,"0")==0){
-                echo '<a class="nav navbar-nav navbar-brand" href="function.php?aid='.$aid.'&pl=1&action=ARC"><span class="glyphicon glyphicon-ok"></span></a> 
-                      <a class="nav navbar-nav navbar-brand" href="function.php?aid='.$aid.'&action=REM"><span class="glyphicon glyphicon-trash"></span></a>
-                      <a class="nav navbar-nav navbar-brand" href="function.php?aid='.$aid.'&pl=3&action=FAV"><span class="glyphicon glyphicon-star-empty"></span></a>';
+                echo '<a data-toggle="tooltip" title="Archive Item!" data-placement="bottom" class="nav navbar-nav navbar-brand" href="function.php?aid='.$aid.'&pl=1&action=ARC"><span class="glyphicon glyphicon-ok"></span></a> 
+                      <a data-toggle="tooltip" title="Delete Item!" data-placement="bottom" class="nav navbar-nav navbar-brand" href="function.php?aid='.$aid.'&action=REM"><span class="glyphicon glyphicon-trash"></span></a>
+                      <a data-toggle="tooltip" title="Add to Favorites!" data-placement="bottom" class="nav navbar-nav navbar-brand" href="function.php?aid='.$aid.'&pl=3&action=FAV"><span class="glyphicon glyphicon-star-empty"></span></a>';
               }
               else{
-                echo '<a class="nav navbar-nav navbar-brand" href="function.php?aid='.$aid.'&pl=1&action=ARC"><span class="glyphicon glyphicon-ok"></span></a> 
-                      <a class="nav navbar-nav navbar-brand" href="function.php?aid='.$aid.'&action=REM"><span class="glyphicon glyphicon-trash"></span></a>
-                      <a class="nav navbar-nav navbar-brand" href="function.php?aid='.$aid.'&pl=0&action=FAV"><span class="glyphicon glyphicon-star" style="color:goldenrod;"></span></a>';   
+                echo '<a data-toggle="tooltip" title="Archive Item!" data-placement="bottom" class="nav navbar-nav navbar-brand" href="function.php?aid='.$aid.'&pl=1&action=ARC"><span class="glyphicon glyphicon-ok"></span></a> 
+                      <a data-toggle="tooltip" title="Delete Item!" data-placement="bottom" class="nav navbar-nav navbar-brand" href="function.php?aid='.$aid.'&action=REM"><span class="glyphicon glyphicon-trash"></span></a>
+                      <a data-toggle="tooltip" title="Remove from Favorites!" data-placement="bottom" class="nav navbar-nav navbar-brand" href="function.php?aid='.$aid.'&pl=0&action=FAV"><span class="glyphicon glyphicon-star" style="color:goldenrod;"></span></a>';   
               }
             }
 
@@ -213,14 +213,17 @@ setTimeout(function(){
         $jsondata = file_get_contents($row['textpth']);
         $json = json_decode($jsondata,true);
         $text = $json['text'];
+        $url = $json['url'];
 
         $text = '<p>' . preg_replace('/\n/', '</p><p>', $text) . '</p>';
         if($row['imgpth'] == "NO"){
           echo mb_convert_encoding('<h2 class="list-group-item-heading" style="text-align: center;">'.$row['title'].'</h2>
+                <a class="pull-right" href="'.$url.'" target="_BLANK">View Original</a>
                 <div class="jumbotron"><div class="reader"><div><p>'.$text.'</p></div></div>',"HTML-ENTITIES","UTF-8");
         }
         else{
           echo mb_convert_encoding('<h2 class="list-group-item-heading" style="text-align: center;">'.$row['title'].'</h2>
+                <a class="pull-right" href="'.$url.'" target="_BLANK">View Original</a>
                 <div class="jumbotron"><div id="float"><img class="img-responsive img-rounded center-block" style="padding: 25px;s" src="'.$row['imgpth'].'"></img></div>
                 <div class="reader"><div><p>'.$text.'</p></div></div>',"HTML-ENTITIES","UTF-8");
         }
@@ -233,6 +236,11 @@ setTimeout(function(){
 </div>
 
 </div>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
 </body>
 </html>
 
