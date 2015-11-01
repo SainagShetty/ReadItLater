@@ -3,7 +3,7 @@
 if(isset($_SESSION['username'])){
     header("location:index.php");
   }
-  
+
 ?><!DOCTYPE html>
 <html lang="en">
   <head>
@@ -38,13 +38,35 @@ if(isset($_SESSION['username'])){
 }
 .jumbotron {
   color: #F5F5F5;
-  text-shadow: 0 0 30px #000;
+
   margin-top: 100px;
 background-image: url("css/assets/image_signup.png");
 background-size: cover;}
 .body{
 background-color: #e9ffff !important;
 }
+#float {
+        position: relative;
+        -webkit-animation: floatBubble 0.4s normal ease-out;
+        animation: floatBubble 0.4s normal ease-out;
+      }
+      @-webkit-keyframes floatBubble {
+          0% {
+              top:50px;
+          }
+          100% {
+              top: 0px;
+          }
+      }
+      @keyframes floatBubble {
+          0% {
+              top:50px;
+          }
+          100% {
+              top: 0px;
+          }
+          
+      }
 </style>
   </head>
   
@@ -62,31 +84,34 @@ background-color: #e9ffff !important;
      
     
     <div class="jumbotron">   
-      <form class="form-signin form-horizontal" name="form1" method="post" action="createuser.php">
+    <form class="form-signin form-horizontal"  name="form1" method="post" action="createuser.php">
 
         <h2 class="form-signin-heading ">Create Account</h2>
         <hr class="divider">
+        <div id="status"></div>
         <div class="form-group">
           <label class="control-label col-sm-2" for="name">Name:</label>
           <div class="col-sm-10">
-            <input name="myusername" id="myusername" type="name" class="form-control" autofocus>
+            <input name="myusername" id="myusername" type="name" class="form-control" autofocus autocomplete="off">
           </div>
         </div>  
-        <div class="form-group">
+        <div class="form-group has-feedback">
           <label class="control-label col-sm-2" for="email">Email:</label>
-          <div class="col-sm-10">
-            <input name="myemail" id="myemail" type="email" class="form-control" autofocus>
+          <div class="col-sm-10" id="emaild">
+             <input type="email" class="form-control" name="myemail" id="myemail" required data-toggle="popover" autocomplete="off">
+              <div id="em"></div>
           </div>
+
         </div>
         <div class="form-group">  
           <label class="control-label col-sm-2" for="email">Password:</label>
-          <div class="col-sm-10">
+          <div class="col-sm-10 has-error" id="pwd">
             <input name="mypassword" id="mypassword" type="password" class="form-control">
           </div>
         </div>
         <div class="form-group">  
           <label class="control-label col-sm-2" for="email">Confirm Password:</label>
-          <div class="col-sm-10"> 
+          <div class="col-sm-10 has-error" id="repwd"> 
             <input name="retypepwd" id="retypepwd" type="password" class="form-control">
           </div>
         </div>
@@ -95,18 +120,41 @@ background-color: #e9ffff !important;
             <button name="Submit" id="submit" class="btn btn-lg btn-primary center-block" type="submit">Create</button>
           </div>
         </div>
-        <div id="message" style="
-    text-shadow: 0 0 30px #fff"></div>
+        <div><?php if(isset($_GET['er'])){
+    $error=$_GET['er'];
+    if($error=='31'){
+      echo '<div class="alert alert-danger alert-dismissable center-block" id="success-alert"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><p class="text-center" style="font-size: 18px !important;">Email id already registered!<br>Already a member? <a href="login_form.php">Log in</a></p></div>';
+    }
+  }?></div>
+        <div id="message" style="text-shadow: 0 0 30px #fff"></div>
       </form>
+
+
 
 </div>
   </div> <!-- /container -->
+   <script>
+      $(document).ready (function(){
+       
+        
+        $("#float").delay(30000).show();       
+        $("#success-alert").alert();
+          $("#success-alert").fadeTo(1000, 500).slideUp(500, function(){
+            $("#success-alert").alert('close');
+          });
+
+      });  
+      
+    </script>
+
 <script src="//code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script type="text/javascript" src="js/bootstrap.js"></script>
     <!-- The AJAX login script -->
     <script src="js/create.js"></script>
-    <script>document.getElementById("submit").disabled = true;</script>
+    <script>document.getElementById("submit").disabled = true;
+
+    </script>
     
   </body>
 </html>
