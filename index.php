@@ -58,6 +58,34 @@
     </style>
   </head>
   <body style="background-color: linen;">
+    <?php
+      if(isset($_GET['fn'])){
+    $fn=$_GET['fn'];
+    if($fn=='36'){
+      echo '<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Item Deleted</h4>
+        </div>
+      </div>
+    </div>
+  </div>';
+    }
+    else if($fn=='49'){
+      echo '<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Item Added</h4>
+        </div>
+      </div>
+    </div>
+  </div>';
+    }
+  }?>
     <nav class="navbar navbar-inverse navbar-fixed-top navbar-custom">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -66,7 +94,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>                        
           </button>
-          <a class="navbar-brand" href="">ReadItLater</a>
+          <a class="navbar-brand" href="index.php">ReadItLater</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
@@ -92,7 +120,7 @@
           <div class="form-signin">
             <?php
               if (!isset($_COOKIE['visit'])) {
-                  setcookie('visit', true, time()+3600); // TODO modify time till end of session
+                  setcookie('visit', true, time()+(3600*60)); // TODO modify time till end of session
                   echo '<div class="alert alert-success" id="success-alert">You have been <strong>successfully logged in</strong>.</div>';
               }
             ?>
@@ -212,14 +240,18 @@
           });
 
       });  
-      $("[data-toggle=popover]").popover({
-          html: true, 
-      	content: function() {
-                return $('#popover-content').html();
-              }
-      });
+      
 
     </script>
+    <script type="text/javascript">
+    $(window).load(function(){
+        $('#myModal').modal('show');
+setTimeout(function(){
+        $("#myModal").modal('hide');
+    }, 900);
+    });
+
+</script>
   </body>
 </html>
 
