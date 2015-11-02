@@ -11,9 +11,9 @@
 <title>ReadItLater</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="fixed-navigation-bar.css">
+
 <link rel="shortcut icon" href="css/assets/favicon.png">
-<script src="//code.jquery.com/jquery.js"></script>
+<script src="js/jquery.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
     <!-- The AJAX login script -->
     <script src="js/login.js"></script>

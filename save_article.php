@@ -10,13 +10,14 @@ if(!isset($_SESSION['username'])){
     <title>ReadItLater: Save</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" href="fixed-navigation-bar.css">
+
 <link rel="shortcut icon" href="css/assets/favicon.png">
 <link rel="stylesheet" href="css/base.css">
 <!--  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 -->
+
 
   <link href="css/bootstrap.css" rel="stylesheet" media="screen">
 
@@ -46,11 +47,15 @@ background-size: cover;}
 background-color: #e9ffff !important;
 }
 </style>
- <script type="text/javascript" src="js/bootstrap.js"></script>
+ 
+
 <script src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+  <script src="js/validator.js"></script>
+  <script src="js/save.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
+  
    
-    <script src="js/save.js"></script>
 
   </head>
   
@@ -68,7 +73,7 @@ background-color: #e9ffff !important;
      
     
     <div class="jumbotron">   
-      <form class="form-signin form-horizontal" name="form1" method="post" action="checkstore.php">
+      <form class="form-signin form-horizontal" name="form12" method="post" action="checkstore.php" data-toggle="validator" >
 
         <h2 class="form-signin-heading ">Save Page</h2>
         <hr class="divider">

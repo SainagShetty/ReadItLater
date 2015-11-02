@@ -26,7 +26,8 @@
 	$result=mysql_query($sql);
 
 	$count=mysql_num_rows($result);
-	if($count != 0){
+	if($count != 0){echo '<div class="alert alert-danger alert-dismissable center-block" id="success-alert"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><p class="text-center" style="font-size: 18px !important;">Email id already registered!<br>Already a member? <a href="login_form.php">Log in</a></p></div>';
+    
 		header("Refresh:0; url=adduser.php?er=31");
 		}
 	else {
@@ -43,6 +44,7 @@
 		$_SESSION['id'] = $row['id'];
 		$_SESSION['username'] = $myusername;
 		$_SESSION['password'] = $mypassword;
+		echo 'true';
         header("Refresh:0; url=index.php");
    
 }

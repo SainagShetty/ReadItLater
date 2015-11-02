@@ -14,6 +14,10 @@ ini_set('max_execution_time', 300);
     echo "<div class=\"alert alert-danger alert-dismissable\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>Invalid URL</div>";
     return;
   }
+  if (!$sock = @fsockopen('www.google.com', 80, $num, $error, 5)){
+echo "<div class=\"alert alert-danger alert-dismissable\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>Error 504. Try again!</div>";
+  return;
+}
   $requrl=$myurl;
   $input = time();
 	$key=$apikey;
@@ -60,9 +64,12 @@ file_put_contents('uploads/'.$input.'.json', $jsondata2);
     mysql_query($sql) or die(mysql_error());
   if($sql){
     echo "true";
-    header("location:index.php?fn=49");
+    
   }
-
+else{
+  echo "<div class=\"alert alert-danger alert-dismissable\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>Error 504. Try again!</div>";
+  return;
+}
   ob_end_flush();
   
 ?>

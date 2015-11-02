@@ -1,20 +1,24 @@
-$(document).ready(function(){
-    
-  $("#savesubmit").click(function(){
+jQuery(document).ready(function () {
+    $('#form12').validator('validator')
+ jQuery("#submit").click(function () {
+        console.log("button url clicked");
 
     var url = $("#url").val();
     if((url == "")) {
       
-      $("#message").html("<div class=\"alert alert-danger alert-dismissable\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>Please a URL/div>");
+      $("#message").html("<div class=\"alert alert-danger alert-dismissable\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>Please enter a  URL</div>");
     }
     else {
       $.ajax({
         type: "POST",
         url: "checkstore.php",
         data: "&url="+url,
+        async: 'false',
         success: function(html){    
           if(html=='true') {
-            window.location="index.php";
+            
+            window.location="index.php?fn=49";
+
           }
           else {
             $("#message").html(html);
