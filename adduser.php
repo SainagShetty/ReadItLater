@@ -1,7 +1,7 @@
 <?php
   session_start();
 if(isset($_SESSION['username'])){
-    header("location:index.php");
+    header("Refresh:0; url=index.php");
   }
 
 ?><!DOCTYPE html>
@@ -10,7 +10,7 @@ if(isset($_SESSION['username'])){
     <title>ReadItLater: Signup</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" href="fixed-navigation-bar.css">
+
 <link rel="shortcut icon" href="css/assets/favicon.png">
 <link rel="stylesheet" href="css/base.css">
 <!--  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -84,7 +84,7 @@ background-color: #e9ffff !important;
      
     
     <div class="jumbotron">   
-    <form class="form-signin form-horizontal"  name="form1" method="post" action="createuser.php">
+    <form class="form-signin form-horizontal" data-toggle="validator" name="form1" method="post" action="createuser.php">
 
         <h2 class="form-signin-heading ">Create Account</h2>
         <hr class="divider">
@@ -133,21 +133,11 @@ background-color: #e9ffff !important;
 
 </div>
   </div> <!-- /container -->
-   <script>
-      $(document).ready (function(){
-       
-        
-        $("#float").delay(30000).show();       
-        $("#success-alert").alert();
-          $("#success-alert").fadeTo(1000, 500).slideUp(500, function(){
-            $("#success-alert").alert('close');
-          });
 
-      });  
-      
-    </script>
 
-<script src="//code.jquery.com/jquery.js"></script>
+<script src="js/jquery.js"></script>
+
+<script src="js/validator.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script type="text/javascript" src="js/bootstrap.js"></script>
     <!-- The AJAX login script -->
